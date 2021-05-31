@@ -1,6 +1,19 @@
 module N2O where
 
-import Foreign
+import Control.Monad
+import Foreign (ffi1, ffiIO1, ffiIO2)
 
 pickle :: Binary -> Binary
 pickle = ffi1 :n2o :pickle
+
+depickle :: Binary -> Binary
+depickle = ffi1 :n2o :depickle
+
+getSession :: forall k v. k -> IO v
+getSession = ffiIO1 :n2o :session
+
+putSession :: forall k v. k -> v -> IO v
+putSession = ffiIO2 :n2o :session
+
+foreign import initContext :: forall k. IO k
+
