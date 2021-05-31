@@ -1,10 +1,17 @@
 module N2O where
 
-import Foreign (ffi1)
+import Control.Monad (IO)
+import Foreign (ffi1, ffiIO1)
 
 pickle :: Binary -> Binary
 pickle = ffi1 :n2o :pickle
 
 depickle :: Binary -> Binary
 depickle = ffi1 :n2o :depickle
+
+encode :: forall k. k -> Binary
+encode = ffi1 :n2o :encode
+
+decode :: forall k. Binary -> IO k
+decode = ffiIO1 :n2o :decode
 

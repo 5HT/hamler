@@ -1,6 +1,6 @@
 module N2O.Session where
 
-import Control.Monad
+import Control.Monad (IO)
 import Foreign (ffiIO1, ffiIO2)
 
 get :: forall k v. k -> IO v
