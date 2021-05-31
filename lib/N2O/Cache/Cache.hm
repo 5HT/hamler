@@ -1,0 +1,11 @@
+module N2O.Cache where
+
+import Data.Atom
+import Control.Monad (IO)
+import Foreign (ffiIO2, ffiIO3)
+
+get :: forall k v. Atom -> k -> IO v
+get = ffiIO2 :n2o :cache
+
+put :: forall k v. Atom -> k -> v -> IO v
+put = ffiIO3 :n2o :cache
