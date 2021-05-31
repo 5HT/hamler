@@ -1,0 +1,6 @@
+module N2O where
+
+import Foreign
+
+pickle :: Binary -> Binary
+pickle = ffi1 :n2o :pickle
