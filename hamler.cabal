@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 730f833508fdf0326f4bf2001421a3ae4b607c5474cfb2ed524b8a08d4ba20cf
+-- hash: 6b02a62ea7fa3ad7502b0ada1b33fd450382cac504cda03a0444bfaecf2409fb
 
 name:           hamler
-version:        0.3
+version:        0.2.2
 synopsis:       The Hamler Programming Language
 description:    Hamler is a functional programming language inspired by Haskell and Standard ML, that compiles to CoreErlang.
 category:       Language, Compiler
