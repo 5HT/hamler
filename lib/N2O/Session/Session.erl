@@ -1,4 +1,4 @@
--module('N2O').
+-module('Session').
 -compile(export_all).
 
 initContext() ->

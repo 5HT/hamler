@@ -1,0 +1,13 @@
+module N2O.Session where
+
+import Control.Monad
+import Foreign (ffiIO1, ffiIO2)
+
+get :: forall k v. k -> IO v
+get = ffiIO1 :n2o :session
+
+put :: forall k v. k -> v -> IO v
+put = ffiIO2 :n2o :session
+
+foreign import initContext :: forall k. IO k
+
