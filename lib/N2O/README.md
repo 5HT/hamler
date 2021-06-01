@@ -3,7 +3,7 @@ N2O/Hamler
 
 Technically N2O front face is a set of services:
 
-* encode term with ETF encoding
+* encode terms with ETF encoding
 * pickling messages with GCM
 * session and cache backend framework services
 * registry services such as SYN or global
