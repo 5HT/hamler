@@ -18,5 +18,10 @@ Usage
 [compiler,elixir,crypto,n2o]
 > import N2O.PI
 > startPi (PI "/12" :"caching" :"n2o" :"n2o" 500 Transient)
+{'Ok',<0.97.0>,"/122"}
+> import Control.Behaviour.Supervisor.Impl
+> which_children :n2o
+[{{caching,"/122"},<0.97.0>,worker,[n2o]},
+ {{caching,"/timer"},<0.93.0>,worker,[n2o]}]
 ```
 
