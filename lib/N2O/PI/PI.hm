@@ -1,0 +1,11 @@
+module N2O.PI where
+
+import Data.Pid (Pid)
+import Control.Monad (IO)
+import Control.Application (RestartType)
+
+data PI = PI String Atom Atom Atom Integer RestartType
+data Sup = Ok Pid String | Error String
+
+foreign import startPi :: PI -> IO Sup
+

@@ -1,9 +1,18 @@
 module N2O where
 
+-- Technically N2O front face is a set of services:
+--
+--   * 1) encode term with ETF encoding
+--   * 2) pickling messages with GCM
+--   * 3) session and cache backend framework services
+--   * 3) registry services such as syn or global
+
 import N2O.Cache as Cache
 import N2O.Session as Session
 import Control.Monad (IO)
 import Foreign (ffi1, ffiIO1, ffiIO2)
+
+-- pickler: AES-GCM/128
 
 pickle :: Binary -> Binary
 pickle = ffi1 :n2o :pickle
@@ -11,11 +20,15 @@ pickle = ffi1 :n2o :pickle
 depickle :: Binary -> Binary
 depickle = ffi1 :n2o :depickle
 
+-- encoder: Erlang Term Format (ETF)
+
 encode :: forall k. k -> Binary
 encode = ffi1 :n2o :encode
 
 decode :: forall k. Binary -> IO k
 decode = ffiIO1 :n2o :decode
+
+-- registry: SYN
 
 reg :: forall k. k -> IO k
 reg = ffiIO1 :n2o :reg
@@ -26,11 +39,15 @@ unreg = ffiIO1 :n2o :unreg
 send :: forall k v z. k -> v -> IO z
 send = ffiIO2 :n2o :send
 
+-- sessions: :cookies table
+
 getSession :: forall k v. k -> IO v
 getSession = Session.get
 
 putSession :: forall k v. k -> v -> IO v
 putSession = Session.put
+
+-- cache: :caching table
 
 getCache :: forall k v. Atom -> k -> IO v
 getCache = Cache.get
